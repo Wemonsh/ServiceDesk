@@ -4,6 +4,7 @@ namespace application\controllers;
 
 use application\core\Controller;
 use application\core\View;
+use application\lib\Translit;
 
 class AccountController extends Controller
 {
@@ -199,10 +200,53 @@ class AccountController extends Controller
     }
 
     public function resetAction() {
-//        mail("gkreg_ip@rk.gov.ru", "the subject", 'test',
-//            "From: gkreg_ip@rk.gov.ru\r\n"
-//            ."Reply-To: gkreg_ip@rk.gov.ru\r\n"
-//            ."X-Mailer: PHP/" . phpversion());
+
+        if ($_POST) {
+            $user = $this->model->checkUserEmail($_POST['email']);
+            if (!empty($user)) {
+                $passwordGenerator = new Translit();
+                $password = $passwordGenerator->generate_password(10);
+                $this->model->updatePassword($user['id'], md5($password));
+
+                // несколько получателей
+                $to = $_POST['email'];
+
+                $subject = 'Тех-поддержка Госкомрегистра - Сброс пароля';
+
+                $message = '
+                <html>
+                <head>
+                  <title>Birthday Reminders for August</title>
+                </head>
+                <body>
+                  <p>Доброе время суток ваш пароль к учетной записи на сайте технической поддержки Госкомрегистр
+                  сброшен по вашему запросу, для сохранения безопасности вашей учетной записи рекомендуем вам после
+                  входа незамедлительно изменить пароль в настройках учетной записи.</p>
+                  <table>
+                    <tr>
+                      <td>Логин:</td><td>'.$user['login'].'</td>
+                    </tr>
+                    <tr>
+                      <td>Пароль:</td><td>'.$password.'</td>
+                    </tr>
+                  </table>
+                </body>
+                </html>
+                ';
+
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                $headers.=  'From: <service@gkreg.rk.gov.ru>'. "\r\n";
+
+
+                mail($to, $subject, $message, $headers);
+
+            } else {
+                echo "Такого Email нет в системе";
+            }
+
+        }
+
 
         $this->view->render('Документы');
     }

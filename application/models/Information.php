@@ -23,7 +23,7 @@ LEFT JOIN information_category AS ic ON information.id_category = ic.id GROUP BY
     }
 
     public function getInformation ($route) {
-        $max = 10;
+        $max = 100;
         $params = [
             'max' => $max,
             'start' => (($route['page'] ?? 1) - 1) * $max,

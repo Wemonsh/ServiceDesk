@@ -34,6 +34,11 @@ class Account extends Model
         return $result;
     }
 
+    public function checkUserEmail ($email){
+        $result = $this->db->row('SELECT * FROM users WHERE email = :email', $vars = ['email' => $email]);
+        return $result[0];
+    }
+
 //    Изменение пароля пользователя
     public function updatePassword ($id, $password){
         $result = $this->db->row('UPDATE users SET password=:password WHERE id=:id', ['id' => $id,'password' => $password]);

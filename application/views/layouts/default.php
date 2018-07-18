@@ -36,7 +36,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-file-alt"></i> Заявки</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/requests/create"><i class="fas fa-plus-square"></i> Создать</a>
+                    <a class="dropdown-item" href="/requests/create"><i class="fas fa-plus-square"></i> Новая заявка</a>
                     <a class="dropdown-item" href="/requests/my"><i class="fas fa-th-list"></i> Мои заявки</a>
 
                     <?php if (!empty($_SESSION['user']) && $_SESSION['user']['id_permission'] == 1): ?>
@@ -56,7 +56,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cogs"></i> Сервисы</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 <!--                    <a class="dropdown-item" href="#">Поиск по базе данных ЕНОТ</a>-->
-                    <a class="dropdown-item" href="/services/death">Информация об умерших из ЗАГС'а</a>
+                    <a class="dropdown-item" href="/services/death">Поиск по БД умерших из ЗАГС'а</a>
 <!--                    <a class="dropdown-item" href="#">Поиск по объектам из постановление 2085</a>-->
 <!--                    <a class="dropdown-item" href="#">Поиск в 100 метровой зоне</a>-->
 <!--                    <a class="dropdown-item" href="#">Список "Сигналы предупреждения"</a>-->

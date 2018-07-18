@@ -265,6 +265,15 @@ return [
         'action' => 'death',
     ],
 
+    'services/death/{page:\d+}' => [
+        'controller' => 'services',
+        'action' => 'death',
+    ],
+
+    'services/death/search' => [
+        'controller' => 'services',
+        'action' => 'd_search',
+    ],
 
 
     'admin/dashboard' => [

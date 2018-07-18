@@ -2,7 +2,8 @@
 
 return [
     'all' => [
-        'death'
+        'death',
+        'd_search'
     ],
     'authorize' => [
     ],

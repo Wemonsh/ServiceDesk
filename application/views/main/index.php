@@ -30,7 +30,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><i class="far fa-eye"></i> Просмотры: <?= $value['views']?></li>
                             <li class="list-group-item"><i class="far fa-calendar-alt"></i> Дата: <?= $value['date']?></li>
-                            <li class="list-group-item"><i class="far fa-user"></i> Автор: <a href="/account/profile/<?=$value['id_user']?>"><?=$value['last_name'].' '.substr($value['first_name'], 0, 2).'.'.substr($value['middle_name'], 0, 2).'.'?></a>
+                            <li class="list-group-item"><i class="far fa-user"></i> Автор: <a href="/account/profile/<?=$value['user_id']?>"><?=$value['last_name'].' '.substr($value['first_name'], 0, 2).'.'.substr($value['middle_name'], 0, 2).'.'?></a>
                         </ul>
                     </div>
                 </div>
